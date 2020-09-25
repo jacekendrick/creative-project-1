@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    background-color: #FAFBFE;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100%;
     display: flex;
@@ -106,7 +106,7 @@ p {
         margin-right: 200px;
     }
 
-    .test { 
+    .dt-section { 
         display: flex;
         justify-content: space-evenly;
         align-items: center;
