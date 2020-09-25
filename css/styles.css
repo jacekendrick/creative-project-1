@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/* Just for testing, not implemented */
 .menu-container {
     color: yellow;
     padding: 20px;
@@ -13,6 +14,7 @@
 
 html {
     height: 100%;
+    margin: 0;
 }
 
 body {
@@ -21,6 +23,29 @@ body {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.section-header {
+    font-size: 38pt;
+    font-weight: bold;
+    color: black;
+    text-emphasis: wrap;
+}
+
+.section-sub-header {
+    font-size: 20pt;
+    font-weight: bold;
+    color: #3B5395; /* TODO */
+    line-height: 1.5;
+}
+
+.section-container {
+    padding: 30px;
+}
+
+.section-sub-container {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .footer-content {
@@ -43,7 +68,7 @@ body {
     height: 100px;
 }
 
-a {
+.footer-text {
     color: white;
     padding-left: 10px;
     padding-right: 10px;
@@ -52,4 +77,15 @@ a {
 a:hover{
     text-decoration: none;
     color: #b19cd9;
+}
+
+p {
+    line-height: 1.75;
+}
+
+.mockimg {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
 }
