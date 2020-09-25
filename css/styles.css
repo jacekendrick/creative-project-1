@@ -4,23 +4,54 @@
     box-sizing: border-box;
 }
 
-.menu-container {
-    color: yellow;
-    padding: 20px;
-    background-color: steelblue;
-    display: flex;
-}
-
 html {
     height: 100%;
+    margin: 0;
 }
 
 body {
-    background-color: grey;
+    background-color: #FAFBFE;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.pagestyle2 {
+    background-color: #56a3a6;
+}
+
+/* TODO - not working yet but want to get 'HomeBase' on the left and other menu items on the right */
+.menuposition {
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.section-header {
+    font-size: 38pt;
+    font-weight: bold;
+    color: #36454f;
+    text-emphasis: wrap;
+}
+
+.section-header2 {
+    color: white;
+}
+
+.section-sub-header {
+    font-size: 20pt;
+    font-weight: bold;
+    color: #56a3a6;
+    line-height: 1.5;
+}
+
+.section-container {
+    padding: 30px;
+}
+
+.section-sub-container {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .footer-content {
@@ -31,19 +62,20 @@ body {
 
 .footer {
     display: flex;
-    background-color: steelblue;
+    background-color: #084c61;
     border-top: 4px solid #36454f;
     margin-top: auto;
     padding: 20px;
     justify-content: space-between;
     align-items: center;
+    color: white;
 }
 
 .footericon {
     height: 100px;
 }
 
-a {
+.footer-text {
     color: white;
     padding-left: 10px;
     padding-right: 10px;
@@ -51,5 +83,37 @@ a {
 
 a:hover{
     text-decoration: none;
-    color: #b19cd9;
+    color: #56a3a6 !important;
+}
+
+p {
+    line-height: 1.75;
+}
+
+.mockimg {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 20%;
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+    
+    .desktop-view {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .test { 
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .dt-section-sub-container {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 }
