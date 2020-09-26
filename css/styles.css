@@ -134,7 +134,7 @@ p {
 }
 
 .signup-input button {
-    background-color: #56a3a6;
+    background-color: #084c61;
     height: 50px;
     padding: 5px;
     margin: auto;
@@ -156,7 +156,7 @@ p {
     border-color: #36454f;
     border-width: 0.5px;
     border-radius: 10px;
-    width: 300px;
+    width: 250px;
     outline: none;
 }
 
@@ -172,11 +172,28 @@ p {
     margin-top: 100px;
 }
 
+button:hover {
+    color: #56a3a6;
+}
+
+.landingimg {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 /* Desktop Styles */
 @media only screen and (min-width: 961px) {
     
     .desktop-view {
         margin-left: 200px;
+        margin-right: 200px;
+    }
+
+    .desktop-view-l {
+        margin-left: 200px;
+    }
+
+    .desktop-view-r {
         margin-right: 200px;
     }
 
@@ -189,5 +206,9 @@ p {
     .dt-section-sub-container {
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    .dt-landingimg {
+        height: 700px;
     }
 }
