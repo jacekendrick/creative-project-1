@@ -133,6 +133,31 @@ p {
     margin-top: 45px;
 }
 
+.country-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+
+.country-input button {
+    background-color: #084c61;
+    height: 50px;
+    padding: 5px;
+    margin: auto;
+    text-align: center;
+    font-size: 15px;
+    width: 70px;
+    border-radius: 10px;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    
+}
+
 .signup-input button {
     background-color: #084c61;
     height: 50px;
@@ -151,6 +176,17 @@ p {
 }
 
 .signup-input input {
+    font-size: 20px;
+    padding: 10px;
+    border-color: #36454f;
+    border-width: 0.5px;
+    border-radius: 10px;
+    width: 250px;
+    outline: none;
+}
+
+
+.country-input input {
     font-size: 20px;
     padding: 10px;
     border-color: #36454f;
@@ -179,6 +215,18 @@ button:hover {
 .landingimg {
     max-height: 100%;
     max-width: 100%;
+}
+
+input:focus {
+    border-color: #56a3a6;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.covid-summary {
+    text-align: center;
+    color: #36454f;
+    font-weight: bold;
 }
 
 /* Desktop Styles */
