@@ -20,40 +20,31 @@
             </li>
             <li class="nav-item">
               <router-link to="/signup">Sign Up</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/covid">COVID-19</router-link>
-            </li>
++            </li>
         </ul>
       </div>
     </nav>
-    <router-view />
+    <router-view id="view"/>
     <div class='footer'> 
-      <i class="fab fa-github fa-2x"></i>
-      <a href="https://github.com/jacekendrick/creative-project-1" target="_blank" class="footer-text">GitHub Repo</a>
-      <p class="footer-text">© Chandler Rogers & Jace Kendrick 2020</p>
+        <div>
+            <i class="fab fa-github fa-2x"></i>
+            <a href="https://github.com/jacekendrick/creative-project-1" target="_blank" class="footer-text">GitHub Repo</a>
+        </div>
+        <div>
+            <p class="footer-text">© Chandler Rogers & Jace Kendrick 2020</p>
+        </div>
     </div>
   </div>
 </template>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 #app {
-  /*font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;*/
   background-color: white;
   font-family: Arial, Helvetica, sans-serif;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 #nav {
@@ -76,22 +67,8 @@
   padding: 8px;
 }
 
+
 /* Original CSS file starts here */
-
-
-html {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    background-color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
 .pagestyle2 {
     background-color: #56a3a6;
 }
@@ -156,11 +133,13 @@ body {
 .footer {
     display: flex;
     border-top: 1px solid #36454f;
+    background-color: #084c61;
     margin-top: auto;
     padding: 10px;
     padding-bottom: 0px;
     justify-content: space-between;
-    color: black;
+    color: white;
+    height: 50px;
 }
 
 .footericon {
@@ -168,7 +147,7 @@ body {
 }
 
 .footer-text {
-    color: black;
+    color: white;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -208,31 +187,6 @@ p {
     margin-top: 45px;
 }
 
-.country-input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin: 15px;
-}
-
-.country-input button {
-    background-color: #084c61;
-    height: 50px;
-    padding: 5px;
-    margin: auto;
-    text-align: center;
-    font-size: 15px;
-    width: 70px;
-    border-radius: 10px;
-    margin-left: 10px;
-    border: none;
-    color: white;
-    outline: none;
-    cursor: pointer;
-    
-}
-
 .signup-input button {
     background-color: #084c61;
     height: 50px;
@@ -251,17 +205,6 @@ p {
 }
 
 .signup-input input {
-    font-size: 20px;
-    padding: 10px;
-    border-color: #36454f;
-    border-width: 0.5px;
-    border-radius: 10px;
-    width: 250px;
-    outline: none;
-}
-
-
-.country-input input {
     font-size: 20px;
     padding: 10px;
     border-color: #36454f;
@@ -296,12 +239,6 @@ input:focus {
     border-color: #56a3a6;
     border-width: 2px;
     border-style: solid;
-}
-
-.covid-summary {
-    text-align: center;
-    color: #36454f;
-    font-weight: bold;
 }
 
 /* Desktop Styles */

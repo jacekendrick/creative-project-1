@@ -9,7 +9,7 @@
           </p>
         </div>
         <div class="section-container desktop-view-r">
-          <img src="images/fakemock.png" class="landingimg dt-landingimg">
+          <img src="../components/assets/fakemock.png" class="landingimg dt-landingimg">
         </div>
       </div>
       <div class="pagestyle2">

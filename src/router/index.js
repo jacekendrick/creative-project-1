@@ -4,7 +4,6 @@ import Home from "../views/Home.vue";
 import Problem from "../views/Problem.vue";
 import Solution from "../views/Solution.vue";
 import SignUp from "../views/SignUp.vue";
-import Covid from "../views/Covid.vue";
 
 Vue.use(VueRouter);
 
@@ -28,11 +27,6 @@ const routes = [
     path: "/signup",
     name: "SignUp",
     component: SignUp
-  },
-  {
-    path: "/covid",
-    name: "Covid",
-    component: Covid
   }
 ];
 
