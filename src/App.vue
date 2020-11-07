@@ -36,7 +36,6 @@
     </div>
   </div>
 </template>
-
 <style>
 
 #app {
