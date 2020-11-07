@@ -20,7 +20,7 @@
             </li>
             <li class="nav-item">
               <router-link to="/signup">Sign Up</router-link>
-+            </li>
+            </li>
         </ul>
       </div>
     </nav>
@@ -139,7 +139,7 @@
     padding-bottom: 0px;
     justify-content: space-between;
     color: white;
-    height: 50px;
+    height: 60px;
 }
 
 .footericon {
