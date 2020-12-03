@@ -1,0 +1,65 @@
+const express = require('express');
+const bodyParser = require("body-parser");
+
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+const mongoose = require('mongoose');
+
+// Configure multer so that it will upload to '../front-end/public/images'
+// const multer = require('multer')
+// const upload = multer({
+//   dest: '../front-end/public/images/',
+//   limits: {
+//     fileSize: 10000000
+//   }
+// });
+
+// connect to the database
+mongoose.connect('mongodb://localhost:27017/Signups', {
+  useNewUrlParser: true
+});
+
+// Create a scheme for items in the museum: a title and a path to an image.
+const signupsSchema = new mongoose.Schema({
+   firstName: String,
+   lastName: String,
+   email: String,
+   hometown: String,
+   date: String
+});
+
+// Create a model for items in the museum.
+const Signups = mongoose.model('Signups', signupsSchema);
+
+app.get('/api/signups', async (req, res) => {
+    try {
+      let signups = await Signups.find();
+      res.send(signups);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+});
+
+app.post('/api/signups', async (req, res) => {
+    const signup = new Signups({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      hometown: req.body.hometown,
+      date: req.body.date
+    });
+    try {
+      await signup.save();
+      res.send(signup);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  });
+
+app.listen(3000, () => console.log('Server listening on port 3000!'));

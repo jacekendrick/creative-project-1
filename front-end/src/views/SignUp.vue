@@ -12,7 +12,8 @@
         <form v-on:submit.prevent="addPerson">
           <fieldset>
             <input v-model="addEmail" placeholder="youremail@mail.com"/>
-            <input v-model="addName" placeholder="First Name"/>
+            <input v-model="addFirstName" placeholder="First Name"/>
+            <input v-model="addLastName" placeholder="Last Name"/>
             <input v-model="addHomeTown" placeholder="Hometown"/>
             <button type='submit'>Submit</button>
           </fieldset>
@@ -53,6 +54,7 @@ input {
 <script>
 import SignUpList from "../components/SignUpList.vue";
 import moment from 'moment';
+import axios from 'axios';
 
 export default {
   name: "SignUp",
@@ -61,23 +63,23 @@ export default {
   },
   data() {
     return {
-      addID: 5,
+      addID: 5, // initialize to 5 because we're using a handful of pre-loaded items
       addEmail: '',
-      addName: '',
+      addFirstName: '',
+      addLastName: '',
       addHomeTown: '',
     }
   },
   methods: {
-    addPerson() {
-      let newPerson = {
-        id: this.addID,
-        name: this.addName,
-        email: this.addEmail,
-        hometown: this.addHomeTown,
-        signupdate: moment().format('MMMM Do')
-      };
-      if (this.addName, this.addEmail, this.addHomeTown) {
-        this.$root.$data.personList.push(newPerson);
+    async addPerson() {
+      if (this.addFirstName, this.addLastName, this.addEmail, this.addHomeTown) {
+        await axios.post('/api/signups', {
+          firstName: this.addFirstName,
+          lastName: this.addLastName,
+          email: this.addEmail,
+          hometown: this.addHomeTown,
+          date: moment().format('MMMM Do')
+        });
         this.resetData();
       }
       else {
@@ -86,7 +88,7 @@ export default {
     },
     resetData() {
       this.addID += 1;
-      this.addName = '';
+      this.addFirstName = '';
       this.addEmail = '';
       this.addHomeTown = '';
     }
