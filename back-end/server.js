@@ -9,17 +9,8 @@ app.use(bodyParser.urlencoded({
 
 const mongoose = require('mongoose');
 
-// Configure multer so that it will upload to '../front-end/public/images'
-// const multer = require('multer')
-// const upload = multer({
-//   dest: '../front-end/public/images/',
-//   limits: {
-//     fileSize: 10000000
-//   }
-// });
-
 // connect to the database
-mongoose.connect('mongodb://localhost:27017/Signups', {
+mongoose.connect('mongodb://localhost:27017/home-base', {
   useNewUrlParser: true
 });
 
@@ -32,10 +23,21 @@ const signupsSchema = new mongoose.Schema({
    date: String
 });
 
-// Create a model for items in the museum.
-const Signups = mongoose.model('Signups', signupsSchema);
+const familySchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  relationship: String,
+  age: String
+});
 
-app.get('/api/signups', async (req, res) => {
+
+// Create a model for signups
+const Signups = mongoose.model('signups', signupsSchema);
+
+// Create a model for family members
+const FamilyMembers = mongoose.model('familymembers', familySchema);
+
+app.get('/api/signup', async (req, res) => {
     try {
       let signups = await Signups.find();
       res.send(signups);
@@ -45,7 +47,7 @@ app.get('/api/signups', async (req, res) => {
     }
 });
 
-app.post('/api/signups', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     const signup = new Signups({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -61,5 +63,59 @@ app.post('/api/signups', async (req, res) => {
       res.sendStatus(500);
     }
   });
+
+
+  //FamilyMember requests
+  app.get('/api/familymembers', async (req, res) => {
+    try {
+      let familymembers = await FamilyMembers.find();
+      res.send(familymembers);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+});
+
+  app.post('/api/familymembers', async (req, res) => {
+    const familymember = new FamilyMembers({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      relationship: req.body.relationship,
+      age: req.body.age,
+    });
+    try {
+      await familymember.save();
+      res.send(familymember);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  });
+
+  app.delete('/api/familymembers/:id', async (req, res) => {
+    try {
+      await FamilyMembers.deleteOne({
+        _id: req.params.id
+      });
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  })
+
+  app.put('/api/familymembers/:id', async (req, res) => {
+    try {
+      let memberToChange = await FamilyMembers.findOne({
+        _id: req.params.id
+      })
+      memberToChange.age = req.body.age;
+      memberToChange.save();
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  })
 
 app.listen(3000, () => console.log('Server listening on port 3000!'));

@@ -21,6 +21,9 @@
             <li class="nav-item">
               <router-link to="/signup">Sign Up</router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/myfamily">My Family</router-link>
+            </li>
         </ul>
       </div>
     </nav>
@@ -195,7 +198,6 @@ p {
     font-size: 15px;
     width: 70px;
     border-radius: 10px;
-    margin-left: 10px;
     border: none;
     color: white;
     outline: none;

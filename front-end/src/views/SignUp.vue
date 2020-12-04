@@ -25,7 +25,7 @@
         Come join the family:
         </span>
     </div>
-    <SignUpList :list="this.$root.$data.personList" />
+    <SignUpList :list="this.signups" />
   </div>
 </template>
 
@@ -63,17 +63,22 @@ export default {
   },
   data() {
     return {
-      addID: 5, // initialize to 5 because we're using a handful of pre-loaded items
+      addID: 0, 
       addEmail: '',
       addFirstName: '',
       addLastName: '',
       addHomeTown: '',
+      signups: [],
+      newSignup: {}
     }
+  },
+  created() {
+    this.getSignups();
   },
   methods: {
     async addPerson() {
       if (this.addFirstName, this.addLastName, this.addEmail, this.addHomeTown) {
-        await axios.post('/api/signups', {
+        let newSignup = await axios.post('/api/signup', {
           firstName: this.addFirstName,
           lastName: this.addLastName,
           email: this.addEmail,
@@ -81,16 +86,28 @@ export default {
           date: moment().format('MMMM Do')
         });
         this.resetData();
+        this.newSignup = newSignup;
       }
       else {
         alert('Must fill out entire form');
       }
     },
+    async getSignups() {
+      try {
+        let response = await axios.get('/api/signup');
+        this.signups = response.data;
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     resetData() {
       this.addID += 1;
       this.addFirstName = '';
+      this.addLastName = '';
       this.addEmail = '';
       this.addHomeTown = '';
+      this.getSignups();
     }
   }
 }
