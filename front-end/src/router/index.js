@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Problem from "../views/Problem.vue";
 import Solution from "../views/Solution.vue";
 import SignUp from "../views/SignUp.vue";
+import FamilyMembers from "../views/FamilyMembers.vue";
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: "/signup",
     name: "SignUp",
     component: SignUp
+  },
+  {
+    path: "/myfamily",
+    name: "FamilyMembers",
+    component: FamilyMembers
   }
 ];
 

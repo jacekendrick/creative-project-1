@@ -2,11 +2,11 @@
 <div class="all-people">
     <div v-for="person in list" :key="person.id">
         <div class="personInfo">
-            <h3>{{person.name}} </h3>
+            <h3>{{person.firstName}} {{person.lastName}}</h3>
             <ul>
-                <li>{{person.email}} </li>
-                <li>{{person.hometown}} </li>
-                <li>Signed Up: {{person.signupdate}} </li>
+                <li>Email: {{person.email}} </li>
+                <li>Hometown: {{person.hometown}} </li>
+                <li>Signed Up: {{person.date}} </li>
             </ul>
         </div>
     </div>

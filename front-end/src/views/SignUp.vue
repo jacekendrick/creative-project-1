@@ -12,7 +12,8 @@
         <form v-on:submit.prevent="addPerson">
           <fieldset>
             <input v-model="addEmail" placeholder="youremail@mail.com"/>
-            <input v-model="addName" placeholder="First Name"/>
+            <input v-model="addFirstName" placeholder="First Name"/>
+            <input v-model="addLastName" placeholder="Last Name"/>
             <input v-model="addHomeTown" placeholder="Hometown"/>
             <button type='submit'>Submit</button>
           </fieldset>
@@ -24,7 +25,7 @@
         Come join the family:
         </span>
     </div>
-    <SignUpList :list="this.$root.$data.personList" />
+    <SignUpList :list="this.signups" />
   </div>
 </template>
 
@@ -53,6 +54,7 @@ input {
 <script>
 import SignUpList from "../components/SignUpList.vue";
 import moment from 'moment';
+import axios from 'axios';
 
 export default {
   name: "SignUp",
@@ -61,34 +63,51 @@ export default {
   },
   data() {
     return {
-      addID: 5,
+      addID: 0, 
       addEmail: '',
-      addName: '',
+      addFirstName: '',
+      addLastName: '',
       addHomeTown: '',
+      signups: [],
+      newSignup: {}
     }
   },
+  created() {
+    this.getSignups();
+  },
   methods: {
-    addPerson() {
-      let newPerson = {
-        id: this.addID,
-        name: this.addName,
-        email: this.addEmail,
-        hometown: this.addHomeTown,
-        signupdate: moment().format('MMMM Do')
-      };
-      if (this.addName, this.addEmail, this.addHomeTown) {
-        this.$root.$data.personList.push(newPerson);
+    async addPerson() {
+      if (this.addFirstName, this.addLastName, this.addEmail, this.addHomeTown) {
+        let newSignup = await axios.post('/api/signup', {
+          firstName: this.addFirstName,
+          lastName: this.addLastName,
+          email: this.addEmail,
+          hometown: this.addHomeTown,
+          date: moment().format('MMMM Do')
+        });
         this.resetData();
+        this.newSignup = newSignup;
       }
       else {
         alert('Must fill out entire form');
       }
     },
+    async getSignups() {
+      try {
+        let response = await axios.get('/api/signup');
+        this.signups = response.data;
+        return true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     resetData() {
       this.addID += 1;
-      this.addName = '';
+      this.addFirstName = '';
+      this.addLastName = '';
       this.addEmail = '';
       this.addHomeTown = '';
+      this.getSignups();
     }
   }
 }
